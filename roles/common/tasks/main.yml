@@ -1,25 +1,19 @@
 ---
-- name: Install Vim package
-  ansible.builtin.package:
-    name: vim
+- name: install zip
+  package:
+    name: "{{ item }}"
     state: present
-
-- name: Install zip package Debian
-  ansible.builtin.apt:
-    name: zip
-    state: present
-    update_cache: yes
-  when: ansible_facts['distribution'] == 'Debian'
+  loop:
+    - zip
+    - vim
 
 - name: Create directory test1
   ansible.builtin.file:
-    path: /tmp/test1
+    path: /tmp/{{ item }}
     state: directory
-
-- name: Create directory test2
-  ansible.builtin.file:
-    path: /tmp/test2
-    state: directory
+  loop:
+    - test1
+    - test2
 
 - name: Copy greet.txt to /tmp
   ansible.builtin.copy:
