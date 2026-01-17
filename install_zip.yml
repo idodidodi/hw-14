@@ -1,0 +1,11 @@
+---
+- name: Install zip
+  hosts: all
+  become: yes # for privilege
+  tasks:
+    - name: Install zip package Debian
+      ansible.builtin.apt:
+        name: zip
+        state: present
+        update_cache: yes
+      when: ansible_facts['distribution'] == 'Debian'
