@@ -1,0 +1,6 @@
+---
+- name: Install zip and vim packages
+  hosts: all
+  become: yes # for privilege
+  roles:
+    - common
