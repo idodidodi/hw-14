@@ -10,3 +10,23 @@
     state: present
     update_cache: yes
   when: ansible_facts['distribution'] == 'Debian'
+
+- name: Create directory test1
+  ansible.builtin.file:
+    path: /tmp/test1
+    state: directory
+
+- name: Create directory test2
+  ansible.builtin.file:
+    path: /tmp/test2
+    state: directory
+
+- name: Copy greet.txt to /tmp
+  ansible.builtin.copy:
+    src: greet.txt
+    dest: /tmp/test1/greet.txt
+
+- name: Write hostname to file.
+  copy:
+    content: "The server hostname is {{ ansible_facts['hostname'] }}\n"
+    dest: /tmp/test2/hostname.txt
