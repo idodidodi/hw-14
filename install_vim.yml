@@ -1,0 +1,9 @@
+---
+- name: Install vim
+  hosts: all
+  become: yes # for privilege
+  tasks:
+    - name: Install Vim package
+      ansible.builtin.package:
+        name: vim
+        state: present

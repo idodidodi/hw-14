@@ -1,0 +1,13 @@
+services:
+  host1:
+    image: ubuntu:latest
+    container_name: host1
+    command: tail -f /dev/null
+  host2:
+    image: ubuntu:latest
+    container_name: host2
+    command: tail -f /dev/null
+  host3:
+    image: ubuntu:latest
+    container_name: host3
+    command: tail -f /dev/null
